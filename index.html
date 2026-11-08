@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1f2437">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="BizFlow">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="icon-192.png">
+<title>BizFlow Books</title>
+<style>
+html,body{margin:0;height:100%;background:#1f2437;overflow:hidden}
+iframe{position:fixed;inset:0;width:100%;height:100%;border:0;background:#f6f7fb}
+#sp{position:fixed;inset:0;display:grid;place-items:center;color:#c3c9dc;font:15px -apple-system,Segoe UI,Roboto,sans-serif;text-align:center;transition:opacity .3s}
+#sp img{width:84px;height:84px;display:block;margin:0 auto 14px}
+#off{display:none;position:fixed;inset:0;place-items:center;background:#1f2437;color:#fff;font:15px sans-serif;text-align:center;padding:24px}
+</style></head>
+<body>
+<div id="sp"><div><img src="icon-192.png" alt="">Opening BizFlow Books&hellip;</div></div>
+<div id="off"><div><b>You are offline</b><p>Connect to the internet and open the app again.</p></div></div>
+<script>
+// >>> paste your Apps Script web app URL here (Deploy > Manage deployments > Web app URL, ends with /exec)
+var APP_URL = "PASTE_YOUR_WEB_APP_URL_HERE";
+// <<<
+if (!navigator.onLine) document.getElementById('off').style.display = 'grid';
+else if (/^https:\/\/script\.google\.com\/.+\/exec/.test(APP_URL)) {
+  var f = document.createElement('iframe');
+  f.src = APP_URL;
+  f.allow = 'clipboard-write; camera; fullscreen';
+  f.onload = function () { var s = document.getElementById('sp'); s.style.opacity = 0; setTimeout(function () { s.remove(); }, 400); };
+  document.body.appendChild(f);
+} else document.getElementById('sp').innerHTML = '<div style="padding:24px">Open <b>index.html</b> and paste your Apps Script web app URL into APP_URL.</div>';
+if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js');
+</script>
+</body></html>
