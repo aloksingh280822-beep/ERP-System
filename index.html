@@ -21,7 +21,7 @@ iframe{position:fixed;inset:0;width:100%;height:100%;border:0;background:#f6f7fb
 <div id="off"><div><b>You are offline</b><p>Connect to the internet and open the app again.</p></div></div>
 <script>
 // >>> paste your Apps Script web app URL here (Deploy > Manage deployments > Web app URL, ends with /exec)
-var APP_URL = "PASTE_YOUR_WEB_APP_URL_HERE";
+var APP_URL = "https://script.google.com/macros/s/AKfycbzY0HeggFJCaJj-gGRtZrd7mtf8kAQoBZb99nqXUJZLOLGnwHYthWs2LeqsfBLAzsVr/exec";
 // <<<
 if (!navigator.onLine) document.getElementById('off').style.display = 'grid';
 else if (/^https:\/\/script\.google\.com\/.+\/exec/.test(APP_URL)) {
